@@ -1,4 +1,6 @@
 const socket = io('ws://localhost:8080');
+/* LOADING */
+let loading = document.getElementById('loading');
 /* HOME */
 let home = document.getElementById('home');
 let usernameField = document.getElementById('username');
@@ -30,6 +32,13 @@ document.onkeydown = (e) => {
 };
 
 /* SOCKET EVENTS */
+socket.on('connect', (e) => {
+  loading.style = 'display: none';
+});
+
+socket.on('disconnect', (e) => {
+  loading.style = 'display: flex';
+});
 
 socket.on('message', (e) => {
   let { user, msg } = e;
@@ -74,6 +83,8 @@ function createYours(msg) {
   messageArea.value = '';
 
   socket.emit('message', { user: username, room: roomId, msg: msg });
+
+  scroll();
 }
 
 function createPerson(msg, user) {
@@ -88,15 +99,15 @@ function createPerson(msg, user) {
   server.innerHTML += `<p>${msg}</p>`;
 
   display.appendChild(server);
+  scroll();
 }
-
 function checkSpam() {
   spam = true;
   send.setAttribute('disabled', 'true');
   setTimeout(() => {
     send.removeAttribute('disabled');
     spam = false;
-  }, 3000);
+  }, 1000);
 }
 
 btn.addEventListener('click', () => {
@@ -154,4 +165,8 @@ function left(user) {
   <h3><i>-</i><span>${user}</span> has left your room!</h3>
   </div>`;
   display.appendChild(left);
+}
+
+function scroll() {
+  display.scrollTop = display.scrollHeight;
 }

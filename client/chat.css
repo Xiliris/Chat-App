@@ -54,6 +54,8 @@ aside ul li {
   text-align: center;
   flex-direction: column;
   padding: 15px;
+  max-width: 100%;
+  overflow: hidden;
 }
 
 #commands {
@@ -61,6 +63,7 @@ aside ul li {
   justify-content: center;
   text-align: center;
   width: 100%;
+  margin-top: 30px;
 }
 
 #send {
@@ -83,8 +86,9 @@ aside ul li {
 
 #display {
   flex-grow: 1;
-  overflow-y: scroll;
-  overflow-x: hidden;
+  overflow-y: auto;
+  display: flex;
+  flex-flow: column nowrap;
 }
 
 #display::-webkit-scrollbar {
@@ -122,6 +126,7 @@ aside ul li {
   border-radius: 12px;
   padding: 10px;
   margin: 0;
+  word-wrap: break-word;
 }
 
 .client {

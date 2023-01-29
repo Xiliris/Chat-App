@@ -5,6 +5,7 @@
     <link rel="stylesheet" href="index.css" />
     <link rel="stylesheet" href="home.css" />
     <link rel="stylesheet" href="chat.css" />
+    <link rel="stylesheet" href="loading.css" />
     <script
       src="https://cdn.socket.io/4.5.4/socket.io.min.js"
       integrity="sha384-/KNQL8Nu5gCHLqwqfQjA689Hhoqgi2S84SNUxC3roTe4EhJ9AfLkp8QiQcU8AMzI"
@@ -13,9 +14,20 @@
     <script src="index.js" defer></script>
   </head>
   <body>
+    <div id="loading">
+      <div>
+        <h1 class="title">Waiting for server connection.</h1>
+        <div class="loading">
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+      </div>
+    </div>
     <div id="home">
       <div id="auth">
-        <label for="text">Username</label>
+        <label for="text">Username (Minimum 4 letters)</label>
         <input
           type="text"
           placeholder="Enter your username"
@@ -43,7 +55,12 @@
       <div id="chat">
         <div id="display"></div>
         <div id="commands">
-          <input type="text" placeholder="Message" id="message" />
+          <input
+            type="text"
+            placeholder="Message"
+            id="message"
+            maxlength="255"
+          />
           <button id="send">Send</button>
         </div>
       </div>

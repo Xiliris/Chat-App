@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Chat App</title>
+    <link rel="stylesheet" href="index.css" />
+    <link rel="stylesheet" href="home.css" />
+    <link rel="stylesheet" href="chat.css" />
+    <script
+      src="https://cdn.socket.io/4.5.4/socket.io.min.js"
+      integrity="sha384-/KNQL8Nu5gCHLqwqfQjA689Hhoqgi2S84SNUxC3roTe4EhJ9AfLkp8QiQcU8AMzI"
+      crossorigin="anonymous"
+    ></script>
+    <script src="index.js" defer></script>
+  </head>
+  <body>
+    <div id="home">
+      <div id="auth">
+        <label for="text">Username</label>
+        <input
+          type="text"
+          placeholder="Enter your username"
+          name="text"
+          maxlength="15"
+          minlength="3"
+          id="username"
+        />
+        <label for="text">Room</label>
+        <input
+          type="number"
+          placeholder="Enter your room ID"
+          max="1000000"
+          min="0"
+          id="room"
+        />
+        <button id="join">Join</button>
+      </div>
+    </div>
+    <div id="chat-container">
+      <aside>
+        <h1>Online</h1>
+        <ul id="users-list"></ul>
+      </aside>
+      <div id="chat">
+        <div id="display"></div>
+        <div id="commands">
+          <input type="text" placeholder="Message" id="message" />
+          <button id="send">Send</button>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
